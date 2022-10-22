@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/AcademiaPayment?createDatabaseIfNotExist=true</property>
+        <property name="connection.username">jasvin</property>
+        <property name="connection.password">password</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+
+        <!-- DB schema will be updated if needed -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        <mapping class="com.academia.payment.bean.Student"/>  <!--beans we will be using for the project-->
+        <mapping class="com.academia.payment.bean.Bill"/>
+        <mapping class="com.academia.payment.bean.Receipt"/>
+    </session-factory>
+
+</hibernate-configuration>
