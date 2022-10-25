@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// The API endpoint where bills are located
 const billsUrl = `http://localhost:3001/api/bills`
 
 // Gets all watchlists which belong to a user

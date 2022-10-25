@@ -1,7 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 import loginService from './services/login'
 import billService from './services/bills'
+
+import Notification from './components/Notification'
+import LoginForm from './components/LoginForm'
+import NavBar from './components/NavBar'
+import Bills from './components/Bills'
 
 const App = () => {
   // user state will store the logged in user object, if no login has been done yet then it will be null
@@ -78,17 +83,15 @@ const App = () => {
       {/* Header of the page */}
       <div className='text-center page-header p-2 regular-text-shadow regular-shadow'>
           <div className='display-4 font-weight-bold'>
-            F<small>IN</small>T<small>RACK</small> {' '}
-            <i className='fa fa-cog fa-spin' aria-hidden='true'></i> {' '}
+            Academia - Payments
           </div>
-          <h5>Share investment watchlists easily!</h5>
       </div>
       
       {/* Notification component that will render only when the notification state is not null */}
       <Notification notification={notification} type={notificationType} />
 
       {
-        /* Show Login for when no login has happened and showLoginForm is true */
+        /* Show Login form when no login has happened */
         user === null && 
         <LoginForm startLogin={handleLogin}/>
       }
