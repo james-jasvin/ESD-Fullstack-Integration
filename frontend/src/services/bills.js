@@ -3,8 +3,8 @@ import axios from 'axios'
 // The API endpoint where bills are located
 const billsUrl = `http://localhost:3001/api/bills`
 
-// Gets all watchlists which belong to a user
-const getUserWatchlistData = async (user) => {
+// Gets all bills which belong to a user
+const getUserBills = async (user) => {
   // Get bills of the given user, using query parameter, ?user={user.id}
   const response = await axios.get(`${billsUrl}?user=${user.id}`)
   
@@ -19,6 +19,6 @@ const payBill = async (bill) => {
   return response.data
 }
 
-const exportObject = { getUserWatchlistData, payBill }
+const exportObject = { getUserBills, payBill }
 
 export default exportObject
