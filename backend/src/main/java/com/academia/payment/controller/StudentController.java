@@ -2,13 +2,9 @@ package com.academia.payment.controller;
 
 import com.academia.payment.bean.Student;
 import com.academia.payment.service.StudentService;
-
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("student")
 public class StudentController {

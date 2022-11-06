@@ -1,0 +1,20 @@
+
+POST http://localhost:8081/billPayment-1.0-SNAPSHOT/api/student/login
+content-type: application/json
+
+{
+    "email": "jasvin@gmail.com", "password": "password"
+}
+
+###
+
+POST http://localhost:8081/billPayment-1.0-SNAPSHOT/api/student/login
+content-type: application/json
+
+{
+    "email": "jasvin.james@iiitb.ac.in", "password": "1234"
+}
+
+###
+
+GET http://localhost:8081/billPayment-1.0-SNAPSHOT/api/bill/get/3

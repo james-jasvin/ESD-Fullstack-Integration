@@ -1,9 +1,3 @@
-// TODO: Fetch logged in student's data from Student table, use student id to fetch Student's bills from bill table
-// Send that as response to front-end
-// Frontend will display a table with the bill data that was fetched
-// Table can be hidden initially and only on successful login will the table's display be not none and filling will
-// happen
-
 package com.academia.payment.dao.impl;
 
 import com.academia.payment.util.HibernateSessionUtil;

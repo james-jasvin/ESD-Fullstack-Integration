@@ -1,9 +1,10 @@
 package com.academia.payment.bean;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
+
 import java.util.List;
-import javax.json.bind.annotation.JsonbTransient;
 
 @Entity
 @Table
@@ -28,6 +29,7 @@ public class Student {
     private String password;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Bill> billList;
 
     public Student() {
@@ -89,7 +91,6 @@ public class Student {
         this.password = password;
     }
 
-    @JsonbTransient
     public List<Bill> getBillList() {
         return billList;
     }

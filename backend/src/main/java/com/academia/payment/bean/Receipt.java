@@ -2,9 +2,8 @@ package com.academia.payment.bean;
 
 import com.academia.payment.bean.Bill;
 import com.academia.payment.bean.Student;
-
-import javax.json.bind.annotation.JsonbTransient;
-import javax.persistence.*;
+import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -32,7 +31,6 @@ public class Receipt {
         this.dateOfPayment = dateOfPayment;
     }
 
-    @JsonbTransient
     public Bill getBill() {
         return bill;
     }

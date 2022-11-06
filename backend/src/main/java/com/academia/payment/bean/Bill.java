@@ -1,7 +1,8 @@
 package com.academia.payment.bean;
 
-import javax.json.bind.annotation.JsonbTransient;
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
 import java.util.List;
 
 @Entity
@@ -79,7 +80,6 @@ public class Bill {
         this.billDate = billDate;
     }
 
-    @JsonbTransient
     public Student getStudent() {
         return student;
     }
@@ -88,7 +88,6 @@ public class Bill {
         this.student = student;
     }
 
-    @JsonbTransient
     public List<Receipt> getReceiptList() {
         return receiptList;
     }
