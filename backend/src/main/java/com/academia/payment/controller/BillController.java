@@ -42,9 +42,9 @@ public class BillController {
     }
 
     @DELETE
-    @Path("/delete/{billId}")
+    @Path("/delete")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response deleteBill(@PathParam("billId") Integer billId)
+    public Response deleteBill(@QueryParam("billId")Integer  billId)
     {
         boolean isDeleted = billService.deleteBill(billId);
         if(isDeleted==true)
