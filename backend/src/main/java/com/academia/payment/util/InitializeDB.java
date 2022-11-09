@@ -16,10 +16,10 @@ public class InitializeDB {
 
         List<List<String>> students = Arrays.asList(
                 Arrays.asList("MT2021059", "Jasvin", "James", "jasvin.james@iiitb.ac.in", "1234"),
-                Arrays.asList("MT2021146", "Thakur", "Devendrasingh", "devendrasingh.thakur@iiitb.ac.in", "1234"),
-                Arrays.asList("MT2021034", "Chandrakant", "Sahu", "chandrakant.sahu@iiitb.ac.in", "1234"),
-                Arrays.asList("MT2021133", "Shwetank", "Singh", "shwetank.singh@iiitb.ac.in", "1234"),
-                Arrays.asList("MT2021047", "Gaurav", "Tirodkar", "gaurav.tirodkar@iiitb.ac.in", "1234")
+                Arrays.asList("MT2021078", "Monit", "Thakkar", "monit.thakkar@iiitb.ac.in", "1234"),
+                Arrays.asList("MT2021026", "Ashutosh", "Soni", "ashutosh.soni@iiitb.ac.in", "1234"),
+                Arrays.asList("MT2021118", "Sarika", "Vadodariya", "sarika.Vadodariya@iiitb.ac.in", "1234"),
+                Arrays.asList("MT2021087", "Niraj", "Gujarathi", "niraj.gujarathi@iiitb.ac.in", "1234")
         );
 
         List<List<Object>> bills = Arrays.asList(

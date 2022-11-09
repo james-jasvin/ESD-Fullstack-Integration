@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="backend:war exploded">
+  <artifact type="exploded-war" name="billPayment:war exploded">
     <output-path>$PROJECT_DIR$/target/billPayment-1.0-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>backend</module>
+        <module>billPayment</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="backend" />
+          <element id="module-output" name="billPayment" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: jakarta.inject:jakarta.inject-api:2.0.0" />
@@ -38,7 +38,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/billPayment-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="backend/web/Web" />
+      <element id="javaee-facet-resources" facet="billPayment/web/Web" />
     </root>
   </artifact>
 </component>

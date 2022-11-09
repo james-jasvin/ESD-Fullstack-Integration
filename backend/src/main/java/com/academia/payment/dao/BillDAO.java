@@ -9,4 +9,5 @@ public interface BillDAO {
     List<Bill> getBills(Integer student_id);
     void createBill(Bill bill);
     Integer payBills(Integer billId, Receipt receipt);
+    boolean deleteBill(Integer billId);
 }

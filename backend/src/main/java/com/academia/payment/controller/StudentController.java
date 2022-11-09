@@ -22,4 +22,5 @@ public class StudentController {
         else
             return Response.ok().entity(loggedInStudent).build();
     }
+
 }

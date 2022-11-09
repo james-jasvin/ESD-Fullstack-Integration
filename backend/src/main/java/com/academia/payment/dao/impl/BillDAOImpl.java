@@ -77,6 +77,23 @@ public class BillDAOImpl implements BillDAO {
         }
     }
 
+    @Override
+    public boolean deleteBill(Integer billId) {
+        try (Session session = HibernateSessionUtil.getSession()) {
+            Transaction transaction = session.beginTransaction();
+            String query_string="delete from Bill where billId=:billId";
+            Query query=session.createQuery(query_string);
+            query.setParameter("billId", billId);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+
+        } catch (HibernateException exception) {
+            System.out.print(exception.getLocalizedMessage());
+        }
+        return false;
+    }
+
     // To fill in dummy data to initialize DB with
     @Override
     public void createBill(Bill bill) {

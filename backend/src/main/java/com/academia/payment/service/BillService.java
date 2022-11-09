@@ -37,4 +37,8 @@ public class BillService {
 
         return successfulPayments;
     }
+    public boolean deleteBill(Integer billId)
+    {
+        return billDAO.deleteBill(billId);
+    }
 }
