@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // The API endpoint where login data is sent to
-const loginBaseUrl = `http://localhost:3001/api/login`
+const loginBaseUrl = `http://localhost:8081/api/student/login`
 
 const login = async (credentials) => {
   // Send the login credential data to the loginBaseUrl API endpoint as an HTTP POST request

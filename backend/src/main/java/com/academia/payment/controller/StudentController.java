@@ -3,11 +3,19 @@ package com.academia.payment.controller;
 import com.academia.payment.bean.Student;
 import com.academia.payment.service.StudentService;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.container.ContainerRequestContext;
+import jakarta.ws.rs.container.ContainerResponseContext;
+import jakarta.ws.rs.container.ContainerResponseFilter;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedMap;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.Provider;
+
+import java.io.IOException;
 
 @Path("student")
-public class StudentController {
+@Provider
+public class StudentController implements ContainerResponseFilter {
     StudentService studentService = new StudentService();
 
     @POST
@@ -23,4 +31,15 @@ public class StudentController {
             return Response.ok().entity(loggedInStudent).build();
     }
 
+    @Override
+    public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
+        final MultivaluedMap<String,Object> headers = responseContext.getHeaders();
+
+        headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS");
+        headers.add("Access-Control-Allow-Origin", "*");
+        if (requestContext.getMethod().equalsIgnoreCase("OPTIONS")) {
+            headers.add("Access-Control-Allow-Headers", requestContext.getHeaderString("Access-Control-Request-Headers"));
+        }
+
+    }
 }

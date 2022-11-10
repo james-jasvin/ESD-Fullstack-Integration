@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // The API endpoint where bills are located
-const billsUrl = `http://localhost:3001/api/bills`
+const billsUrl = `http://localhost:8081/api/bill/get`
 
 // Gets all bills which belong to a user
 const getUserBills = async (user) => {

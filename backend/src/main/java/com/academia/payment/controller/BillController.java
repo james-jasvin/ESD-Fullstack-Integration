@@ -18,13 +18,18 @@ public class BillController {
     BillService billService=new BillService();
 
     @GET
-    @Path("/get/{studentId}")
+    @Path("/get")
     @Produces(MediaType.APPLICATION_JSON) //return type
     // @Consumes(MediaType.APPLICATION_JSON) //parameter
-    public Response getBills(@PathParam("studentId") int s_id) {
+    public Response getBills(@QueryParam("studentId") int s_id) {
         List<Bill> billList = billService.getBills(s_id);
 
-        return Response.ok().entity(billList).build();
+        return Response.ok().header("Access-Control-Allow-Origin","*").
+                header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .header("Access-Control-Max-Age", "1209600")
+        .entity(billList).build();
     }
 
     @POST
@@ -49,7 +54,11 @@ public class BillController {
         boolean isDeleted = billService.deleteBill(billId);
         if(isDeleted==true)
         {
-            return Response.status(200).entity("Bill entry with Bill-id "+billId+"Deleted successfully").build();
+            return Response.status(200).header("Access-Control-Allow-Origin","*").
+                header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .header("Access-Control-Max-Age", "1209600").entity("Bill entry with Bill-id "+billId+" Deleted successfully").build();
         }
         else
         {
