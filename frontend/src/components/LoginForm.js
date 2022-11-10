@@ -5,8 +5,8 @@ import React, { useState } from 'react'
   startLogin is the method that uses the axios service to submit login credentials to the backend
 */
 const LoginForm = ({ startLogin }) => {
-  // States for tracking form input which are the username and password
-  const [ username, setUsername ] = useState('')
+  // States for tracking form input which are the email address and password
+  const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
 
   // onSubmit event handler of this form
@@ -15,14 +15,14 @@ const LoginForm = ({ startLogin }) => {
     event.preventDefault()
 
     const credentials = {
-      username, password
+      email, password
     }
 
     // Calling startLogin with the provided credentials that will make a call to the backend
     startLogin(credentials)
 
     // Reset the form state, i.e. the text that's on the username and password text boxes to empty strings
-    setUsername('')
+    setEmail('')
     setPassword('')
   }
 
@@ -31,16 +31,16 @@ const LoginForm = ({ startLogin }) => {
     <form onSubmit={handleLogin} id='login-form'>
       <input 
         type='text'
-        placeholder='Username'
-        // Note that the text that's displayed on the textbox (value attribute) is controlled by the username state
-        value={username}
+        placeholder='Email'
+        // Note that the text that's displayed on the textbox (value attribute) is controlled by the email state
+        value={email}
         // onChange event handler
         // When you type something on the textbox, the onChange event handler will be triggered
-        // This event handler as written below, updates the username state with what's being typed by the user
+        // This event handler as written below, updates the email state with what's being typed by the user
         // Because a state has been updated, the form component will be re-rendered and you can see the updated input
         // on the screen, obviously this happens so fast that you cannot see it but this is the entire procedure
-        onChange={event => setUsername(event.target.value)}
-        id='username'
+        onChange={event => setEmail(event.target.value)}
+        id='email'
         required
       />
         
@@ -81,10 +81,10 @@ const LoginForm = ({ startLogin }) => {
   //             <input 
   //               type='text'
   //               className='form-control'
-  //               placeholder='Username'
-  //               value={username}
-  //               onChange={event => setUsername(event.target.value)}
-  //               id='username'
+  //               placeholder='Email Address'
+  //               value={email}
+  //               onChange={event => setEmail(event.target.value)}
+  //               id='email'
   //               required
   //             />
   //           </div>
