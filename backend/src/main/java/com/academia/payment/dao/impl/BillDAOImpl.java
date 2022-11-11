@@ -9,7 +9,6 @@
 package com.academia.payment.dao.impl;
 
 import com.academia.payment.bean.Bill;
-import com.academia.payment.bean.Receipt;
 import com.academia.payment.dao.BillDAO;
 import com.academia.payment.util.HibernateSessionUtil;
 
@@ -41,44 +40,7 @@ public class BillDAOImpl implements BillDAO {
     }
 
     @Override
-    public Integer payBills(Integer billId, Receipt receipt){
-
-        try (Session session = HibernateSessionUtil.getSession()) {
-            Transaction transaction = session.beginTransaction();
-
-            String query_string = "UPDATE Bill SET amount = amount - :amountToPay where billId=:billId";
-
-            Query query = session.createQuery(query_string);
-
-            query.setParameter("amountToPay", receipt.getAmountPaid());
-            query.setParameter("billId", billId);
-
-            int result = query.executeUpdate();
-
-            // Get Bill associated with given billId
-            query_string = "FROM Bill WHERE billId=:billId";
-            query = session.createQuery(query_string);
-            query.setParameter("billId", billId);
-            Bill bill = (Bill) query.list().get(0);
-
-            // Set Bill associated with given receipt
-            receipt.setBill(bill);
-
-            // Insert new Receipt into the Receipt table
-            session.save(receipt);
-
-            transaction.commit();
-
-            return result;
-        }
-        catch (HibernateException exception) {
-            System.out.print(exception.getLocalizedMessage());
-            return 0;
-        }
-    }
-
-    @Override
-    public boolean deleteBill(Integer billId) {
+    public boolean payBill(Integer billId) {
         try (Session session = HibernateSessionUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
             String query_string="delete from Bill where billId=:billId";

@@ -30,7 +30,7 @@ const LoginForm = ({ startLogin }) => {
   return (
     <form onSubmit={handleLogin} id='login-form'>
       <input 
-        type='text'
+        type='email'
         placeholder='Email'
         // Note that the text that's displayed on the textbox (value attribute) is controlled by the email state
         value={email}

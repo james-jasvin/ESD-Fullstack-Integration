@@ -30,7 +30,7 @@ const App = () => {
     setTimeout(() => {
       setNotificationType(null)
       setNotification(null)
-    }, 10000)
+    }, 3000)
   }
 
   // Function that handles login of users
@@ -38,12 +38,13 @@ const App = () => {
     try {
       const userObject = await loginService.login(credentials)
       setUser(userObject)
-
-      notificationHandler(`Logged in successfully as ${userObject.name}`, 'success')
-        setBills([])
+      window.localStorage.setItem('loggedInUser', JSON.stringify(userObject))
+      
+      notificationHandler(`Logged in successfully as ${userObject.firstName}`, 'success')
+      setBills([])
     }
     catch (exception) {
-      notificationHandler(exception.response.data.error, 'error')
+      notificationHandler(`Log in failed, check username and password entered`, 'error')
     }
   }
 
@@ -55,15 +56,16 @@ const App = () => {
 
       // On successful completion of the above method, iterate through all the bills and only retain those bills
       // which don't have ID equal to the billObject's ID, i.e. the ID of the bill that's just been paid/deleted
-      setBills(bills.filter(bill => bill.id !== billObject.id))
+      setBills(bills.filter(bill => bill.billId !== billObject.billId))
 
-      notificationHandler(`Successfully paid the "${billObject.name}" bill`, 'success')
+      notificationHandler(`Successfully paid the "${billObject.description}" bill`, 'success')
     }
     catch (exception) {
-      notificationHandler(exception.response.data.error, 'error')
+      notificationHandler(`Failed to pay the "${billObject.description}" bill successfully`, 'error')
     }
   }
 
+  
   // Effect Hook that fetches a user's bills
   // If "user" state changes, then the new bills must be fetched.
   // This is why "user" is part of the dependency array of this hook
@@ -77,6 +79,15 @@ const App = () => {
       }
       fetchData()
   }, [user])
+
+
+  // Effect Hook that parses the local storage for 'loggedInUser' and sets the "user" state if a valid match is found
+  // This enables user to login automatically without having to type in the credentials. Caching the login if you will.
+  useEffect(() => {
+    const loggedInUser = window.localStorage.getItem('loggedInUser')
+    if (loggedInUser)
+      setUser(JSON.parse(loggedInUser))
+  }, [])
 
   return (
     <div>

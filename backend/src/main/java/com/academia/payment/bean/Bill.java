@@ -3,8 +3,6 @@ package com.academia.payment.bean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "Bill")
 public class Bill {
@@ -24,9 +22,6 @@ public class Bill {
     @ManyToOne
     @JoinColumn(name = "studentId")
     private Student student;
-
-    @OneToMany(mappedBy = "bill", fetch = FetchType.EAGER)
-    private List<Receipt> receiptList;
 
     public Bill() {
     }
@@ -86,13 +81,5 @@ public class Bill {
 
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    public List<Receipt> getReceiptList() {
-        return receiptList;
-    }
-
-    public void setReceiptList(List<Receipt> receiptList) {
-        this.receiptList = receiptList;
     }
 }

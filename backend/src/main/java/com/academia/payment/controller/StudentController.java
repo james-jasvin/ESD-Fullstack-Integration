@@ -14,14 +14,13 @@ import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 
 @Path("student")
-@Provider
-public class StudentController implements ContainerResponseFilter {
+public class StudentController {
     StudentService studentService = new StudentService();
 
     @POST
     @Path("/login")
-    @Produces(MediaType.APPLICATION_JSON) //return type
-    @Consumes(MediaType.APPLICATION_JSON) //parameter
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response login(Student student) {
         Student loggedInStudent = studentService.login(student);
 
@@ -29,17 +28,5 @@ public class StudentController implements ContainerResponseFilter {
             return Response.status(401).entity(null).build();
         else
             return Response.ok().entity(loggedInStudent).build();
-    }
-
-    @Override
-    public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
-        final MultivaluedMap<String,Object> headers = responseContext.getHeaders();
-
-        headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS");
-        headers.add("Access-Control-Allow-Origin", "*");
-        if (requestContext.getMethod().equalsIgnoreCase("OPTIONS")) {
-            headers.add("Access-Control-Allow-Headers", requestContext.getHeaderString("Access-Control-Request-Headers"));
-        }
-
     }
 }

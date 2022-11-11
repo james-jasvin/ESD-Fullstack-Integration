@@ -21,16 +21,18 @@ const Bill = ({ bill, payBill }) => {
     in the createWatchlistInstrument function.
   */
   return (
-    <div>
+    <tr>
       {/* Render the Bill's details */}
-      <div>
-        {bill.name} - {bill.date} - {bill.amount}
-      </div>
-      {/* Payment button that calls the payBill() method with the given Bill object onClick */}
-      <button onClick={payBill(bill)}>
-        Pay Bill
-      </button>
-    </div>
+      <td>{bill.description}</td>
+      <td>{bill.billDate}</td>
+      <td>{bill.amount}</td>
+      <td>
+        {/* Payment button that calls the payBill() method with the given Bill object onClick */}
+        <button onClick={() => payBill(bill)}>
+          Pay Bill
+        </button>
+      </td>
+    </tr>
   )
 }
 
