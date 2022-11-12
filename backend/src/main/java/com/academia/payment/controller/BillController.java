@@ -35,8 +35,8 @@ public class BillController {
     @Path("/{billId}")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteBill(@PathParam("billId") Integer billId) {
-        Boolean isDeleted = billService.payBill(billId);
-        if (isDeleted)
+        Boolean successfulPayment = billService.payBill(billId);
+        if (successfulPayment)
             return Response.status(204).build();
         else
             return Response.status(400).build();
