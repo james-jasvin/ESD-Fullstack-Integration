@@ -3,4 +3,5 @@ Demonstrating Full Stack Development and Integration as part of the Enterprise S
 
 Tech Stack:
 Frontend: React, HTML, JS, CSS
+
 Backend: MySQL, Hibernate, Jersey (JPA + JAX-RS), Java
