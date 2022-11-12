@@ -29,7 +29,7 @@ public class Student {
     private String password;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JsonIgnore // Doesn't seem to work in this case
     private List<Bill> billList;
 
     public Student() {

@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/*
+    Script that initializes the database with dummy entries for all tables
+*/
 public class InitializeDB {
     public static void main(String[] args) {
 

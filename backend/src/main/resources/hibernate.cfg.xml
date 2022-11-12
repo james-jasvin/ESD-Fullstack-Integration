@@ -15,6 +15,5 @@
         <property name="show_sql">true</property>
         <mapping class="com.academia.payment.bean.Student"/>
         <mapping class="com.academia.payment.bean.Bill"/>
-
     </session-factory>
 </hibernate-configuration>

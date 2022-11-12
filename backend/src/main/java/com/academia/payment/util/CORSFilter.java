@@ -6,6 +6,7 @@ import jakarta.ws.rs.ext.Provider;
 
 import java.io.IOException;
 
+// This class adds the CORS policy for the backend server to each Response being sent
 // Much thanks to this StackOverflow post for this great explanation
 // https://stackoverflow.com/questions/28065963/how-to-handle-cors-using-jax-rs-with-jersey
 

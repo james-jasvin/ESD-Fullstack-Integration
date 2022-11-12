@@ -12,50 +12,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
+    /*
+        This method performs login of the Student object specified
+        So it basically checks whether the credentials provided in the Student object match with
+        a Student object in the database
+    */
     @Override
     public Student login(Student student) {
         try (Session session = HibernateSessionUtil.getSession();){
-            String s_email = student.getEmail();
-            String s_password = student.getPassword();
-
-            System.out.println(s_email);
-            System.out.println(s_password);
-
+            String studentEmail = student.getEmail();
+            String studentPassword = student.getPassword();
 
             List<Object> result = new ArrayList<Object>(
                 session.createQuery(
-                        "FROM Student WHERE email = :s_email and password = :s_password"
+                        "FROM Student WHERE email = :studentEmail and password = :studentPassword"
                         )
-                        .setParameter("s_email", s_email)
-                        .setParameter("s_password", s_password)
+                        .setParameter("studentEmail", studentEmail)
+                        .setParameter("studentPassword", studentPassword)
                         .list()
             );
 
+            // If no valid Student found, return null so that login failure is understood
             if (result.size() == 0)
                 return null;
             else
                 return (Student) result.get(0);
-
-        } catch (HibernateException exception) {
+        }
+        catch (HibernateException exception) {
             System.out.print(exception.getLocalizedMessage());
         }
 
         return null;
     }
 
-    // To fill table with dummy data to initialize DB with
+    /*
+        This method inserts the provided Student object into the database
+        Used by the InitializeDB script to initialize the database with dummy data
+    */
     @Override
     public void createStudent(Student student) {
-
         try (Session session = HibernateSessionUtil.getSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(student);
             transaction.commit();
-
-        } catch (HibernateException exception) {
+        }
+        catch (HibernateException exception) {
             System.out.print(exception.getLocalizedMessage());
         }
     }
-
-
 }

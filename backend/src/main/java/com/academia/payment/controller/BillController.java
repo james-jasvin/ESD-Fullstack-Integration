@@ -12,21 +12,33 @@ import java.util.List;
 public class BillController {
     BillService billService = new BillService();
 
+    /*
+        Path: GET /api/bill?studentId={studentId}
+        Input: {studentId}
+        Response: 200 Status Code with the Bills of the student (if Authorization added, would need to change this)
+        Description: Return all bills of the Student with id = {studentId}
+    */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getBills(@QueryParam("studentId") int s_id) {
-        List<Bill> billList = billService.getBills(s_id);
+    public Response getBills(@QueryParam("studentId") int studentId) {
+        List<Bill> billList = billService.getBills(studentId);
         return Response.ok().entity(billList).build();
     }
 
+    /*
+        Path: DELETE /api/bill/{billId}
+        Input: {billId}
+        Response: 204 (No Content Created) if deletion successful, else return 400 (Bad Request)
+        Description: Delete the bill with id = {billId}
+    */
     @DELETE
     @Path("/{billId}")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteBill(@PathParam("billId") Integer billId) {
-        boolean isDeleted = billService.payBill(billId);
+        Boolean isDeleted = billService.payBill(billId);
         if (isDeleted)
             return Response.status(204).build();
         else
-            return Response.status(400).entity("Operation Failed").build();
+            return Response.status(400).build();
     }
 }

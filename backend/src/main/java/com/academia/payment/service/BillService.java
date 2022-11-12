@@ -17,7 +17,7 @@ public class BillService {
 
         return billList;
     }
-    public boolean payBill(Integer billId) {
+    public Boolean payBill(Integer billId) {
         return billDAO.payBill(billId);
     }
 }

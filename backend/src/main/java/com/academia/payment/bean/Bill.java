@@ -1,6 +1,5 @@
 package com.academia.payment.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,25 +25,10 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(Integer billId, String description, Integer amount, String billDate) {
-        this.billId = billId;
-        this.description = description;
-        this.amount = amount;
-        this.billDate = billDate;
-    }
-
     public Bill(String description, Integer amount, String billDate) {
         this.description = description;
         this.amount = amount;
         this.billDate = billDate;
-    }
-
-    public Bill(Integer billId, String description, Integer amount, String billDate, Student student) {
-        this.billId = billId;
-        this.description = description;
-        this.amount = amount;
-        this.billDate = billDate;
-        this.student = student;
     }
 
     public Integer getBillId() {
